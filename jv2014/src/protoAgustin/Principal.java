@@ -12,34 +12,23 @@ package protoAgustin;
 import java.util.Date;
 import java.util.Scanner;
 
+import modelo.SesionUsuario;
+import modelo.Usuario;
+import accesoDatos.datos;
+
 
 /**
 * @author admin
 * 
 */
 public class Principal {
-
-	public static final int MAX_USUARIOS = 10;
-	public static final int MAX_SESIONES = 10;
-	
-	public static Usuario[] datosUsuarios = new Usuario[MAX_USUARIOS];
-	public static SesionUsuario[] sesionesUsuario = new SesionUsuario[MAX_SESIONES];
-	
 	
 	public static void main(String[] args) {
 		
-		//Apartado 4 y 5: Pruebas
-		//pruebasPrevias();
+		datos.cargarDatosUsuario();
 		
-		//Apartado 6 y 7: 
-		cargarDatosPrueba();		
-		//mostrarTodosDatosUsuarios();
-		
-		//Apartado 8:
 		iniciarSesion();
 	
-	 
-		
 	}
 
 	/**
@@ -63,25 +52,25 @@ public class Principal {
 			password = teclado.nextLine();
 
 			// Busca usuario correspondiente a credencial
-			for (int i = 0; i < MAX_USUARIOS && datosUsuarios[i] != null; i++) { 					//recorrer vector
+			for (int i = 0; i < datos.MAX_USUARIOS && datos.datosUsuarios[i] != null; i++) { 					//recorrer vector
 
 				//compara nombre
-				if (datosUsuarios[i].nombre.equals(credencialUsuario)) { 		//Si encontrado 
+				if (datos.datosUsuarios[i].nombre.equals(credencialUsuario)) { 		//Si encontrado 
 					noEncuentra  = false;
 
 					//comprueba clave
-					if (datosUsuarios[i].claveAcceso.equals(password)) {		//Si coincide
+					if (datos.datosUsuarios[i].claveAcceso.equals(password)) {		//Si coincide
 
 						// Registra sesiÃ³n
-						sesionesUsuario[sesionesRegistradas] = new SesionUsuario();
-						sesionesUsuario[sesionesRegistradas].usr = datosUsuarios[i];
-						sesionesUsuario[sesionesRegistradas].fecha = new Date().toString();
+						datos.sesionesUsuario[sesionesRegistradas] = new SesionUsuario();
+						datos.sesionesUsuario[sesionesRegistradas].usr = datos.datosUsuarios[i];
+						datos.sesionesUsuario[sesionesRegistradas].fecha = new Date().toString();
 
 						sesionesRegistradas++;									// actualiza contador sesiones
 
 						System.out.println("Sesiï¿½n: " + sesionesRegistradas + '\n' +
-								"Iniciada por: " + datosUsuarios[i].nombre + " "
-								+ datosUsuarios[i].apellidos);
+								"Iniciada por: " + datos.datosUsuarios[i].nombre + " "
+								+ datos.datosUsuarios[i].apellidos);
 					}
 					else {
 						intentos--;
@@ -105,7 +94,7 @@ public class Principal {
 				seguir = false; 
 
 			// Continï¿½a la simulaciï¿½n si se quiere seguir y hay sitio para nuevas sesiones	
-		} while (seguir && intentos > 0 && sesionesRegistradas < sesionesUsuario.length); 
+		} while (seguir && intentos > 0 && sesionesRegistradas < datos.sesionesUsuario.length); 
 
 		System.out.println("Fin de la prueba...");
 
@@ -119,7 +108,7 @@ public class Principal {
 	 */
 	private static void mostrarTodosDatosUsuarios() {
 		
-		for (Usuario u: datosUsuarios)
+		for (Usuario u: datos.datosUsuarios)
 			System.out.println("\n" + u);
 	
 	}
@@ -182,39 +171,9 @@ public class Principal {
 		
 		System.out.println(sesion1);
 		
-	}
+	
 
-	/**
-	 * Genera datos de prueba vï¿½lidos dentro 
-	 * de los almacenes de datos.
-	 */
-	private static void cargarDatosPrueba() {
-		datosUsuarios[0] = new Usuario();
-		
-		datosUsuarios[0].nif = "2344556K";
-		datosUsuarios[0].nombre = "pepe"; 
-		datosUsuarios[0].apellidos = "Lï¿½pez Pï¿½rez";
-		datosUsuarios[0].domicilio = "C/Luna, 27 30132 Murcia";
-		datosUsuarios[0].correoE = "pepe@gmail.com";
-		datosUsuarios[0].fechaNacimiento = "1990.11.12";
-		datosUsuarios[0].fechaAlta = "2014.12.3";
-		datosUsuarios[0].claveAcceso = "miau";
-		datosUsuarios[0].rol = "usuario normal";
-		
-		for (int i = 1; i < MAX_USUARIOS; i++) {
-			
-			datosUsuarios[i] = new Usuario();
-			
-			datosUsuarios[i].nif = i + "344556K";
-			datosUsuarios[i].nombre = "pepe" + i; 
-			datosUsuarios[i].apellidos = "Lï¿½pez" + " Pï¿½rez" +i ;
-			datosUsuarios[i].domicilio = "C/Luna, 27 30132 Murcia";
-			datosUsuarios[i].correoE = "pepe" + i + "@gmail.com";
-			datosUsuarios[i].fechaNacimiento = "1990.11.12";
-			datosUsuarios[i].fechaAlta = "2014.12.3";
-			datosUsuarios[i].claveAcceso = "miau" + i;
-			datosUsuarios[i].rol = "usuario normal";
-		}
+	
 		
 	}
 
