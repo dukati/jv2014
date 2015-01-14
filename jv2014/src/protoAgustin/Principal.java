@@ -28,6 +28,9 @@ public class Principal {
 		datos.cargarDatosUsuario();
 		
 		iniciarSesion();
+		
+		//mostrar Todos Datos Usuarios
+		datos.mostrarDatosUsuarios();
 	
 	}
 

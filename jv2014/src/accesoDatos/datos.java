@@ -17,7 +17,7 @@ public class datos {
 			cargarDatosUsuario();	
 			
 			//mostrar Todos Datos Usuarios
-			mostrarTodosDatosUsuarios();
+			mostrarDatosUsuarios();
 			
 			
 	
@@ -50,7 +50,7 @@ public class datos {
 	/**
 	 * Muestra por consola todos los usuarios almacenados.
 	 */
-	private static void mostrarTodosDatosUsuarios() {
+	public static void mostrarDatosUsuarios() {
 		
 		for (Usuario u: datos.datosUsuarios)
 			System.out.println("\n" + u);
