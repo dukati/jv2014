@@ -13,9 +13,13 @@ public class datos {
 
 	public static void main(String[] args) {
 	
-	//Apartado 6 y 7: 
-			cargarDatosUsuario();		
-			//mostrarTodosDatosUsuarios();
+			
+			cargarDatosUsuario();	
+			
+			//mostrar Todos Datos Usuarios
+			mostrarTodosDatosUsuarios();
+			
+			
 	
 	}
 	/**
@@ -42,5 +46,16 @@ public class datos {
 			datosUsuarios[i].rol = "usuario normal";
 		}
 	}
+	
+	/**
+	 * Muestra por consola todos los usuarios almacenados.
+	 */
+	private static void mostrarTodosDatosUsuarios() {
+		
+		for (Usuario u: datos.datosUsuarios)
+			System.out.println("\n" + u);
+	
+	}
+	
 	
 }

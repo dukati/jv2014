@@ -103,15 +103,7 @@ public class Principal {
 	}
 
 	
-	/**
-	 * Muestra por consola todos los usuarios almacenados.
-	 */
-	private static void mostrarTodosDatosUsuarios() {
-		
-		for (Usuario u: datos.datosUsuarios)
-			System.out.println("\n" + u);
 	
-	}
 
 	
 	/**
