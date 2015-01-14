@@ -18,8 +18,6 @@ public class datos {
 			
 			//mostrar Todos Datos Usuarios
 			mostrarDatosUsuarios();
-			
-			
 	
 	}
 	/**
@@ -27,8 +25,6 @@ public class datos {
 	 * de los almacenes de datos.
 	 */
 	public static void cargarDatosUsuario() {
-		
-		
 		
 		
 		for (int i = 0; i < MAX_USUARIOS; i++) {
